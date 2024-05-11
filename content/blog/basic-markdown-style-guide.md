@@ -17,6 +17,18 @@ Strikethrough: You can ~~strikethrough~~ text.
 
 Inline code: You can add inline code like this `const hello = "world"`.
 
+```go
+package main
+
+import (
+  "fmt"
+)
+
+func main() {
+  fmt.Println("Hello, world!")
+}
+```
+
 ## Headings
 
 The following HTML `<h2>`—`<h6>` elements represent five levels of section headings. `<h1>` is also available but not recommended since the post title is already a `<h1>` element it is not a good practice to have more than one `<h1>` elements in a page.
@@ -80,13 +92,13 @@ Syntax highlighting is done using [Prism.js](https://github.com/PrismJS/prism). 
 ```html
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>Example HTML5 Document</title>
-  </head>
-  <body>
-    <p>Test</p>
-  </body>
+	<head>
+		<meta charset="utf-8" />
+		<title>Example HTML5 Document</title>
+	</head>
+	<body>
+		<p>Test</p>
+	</body>
 </html>
 ```
 
