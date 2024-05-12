@@ -31,5 +31,10 @@ export default defineConfig({
 		port: SERVER_PORT,
 	},
 	site: BASE_URL,
+	vite: {
+		ssr: {
+			external: ["prismjs"],
+		},
+	},
 	integrations: [sitemap(), tailwind()],
 });
