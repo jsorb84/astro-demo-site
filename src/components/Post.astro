@@ -1,0 +1,53 @@
+---
+import { RenderableTreeNode } from "@markdoc/markdoc";
+import { blog } from "../lib/markdoc/frontmatter.schema";
+type PostFrontmatter = typeof blog._type;
+interface Props {
+	post: {
+		slug: string;
+		content: RenderableTreeNode;
+		frontmatter: PostFrontmatter;
+	};
+}
+const { post } = Astro.props;
+const formattedDate = new Date(post.frontmatter.date).toLocaleDateString(
+	"en-us",
+	{
+		year: "numeric",
+		month: "short",
+		day: "numeric",
+	}
+);
+---
+
+<li class="card bg-base-300 card-bordered p-3">
+	<div class="card-title">
+		{post.frontmatter.title}
+	</div>
+	<div class="card-body"></div>
+	<div class="publish-date card-actions p-2 justify-between">
+		<time datetime={post.frontmatter.date.toISOString()}>
+			{formattedDate}
+		</time>
+		<div class="">
+			{
+				post.frontmatter.external ? (
+					<a
+						href={post.frontmatter.url}
+						class="btn btn-sm btn-outline btn-primary"
+						target="_blank"
+					>
+						Read Post
+					</a>
+				) : (
+					<a
+						class="btn btn-sm btn-outline btn-primary"
+						href={`/blog/${post.slug}`}
+					>
+						Read Post
+					</a>
+				)
+			}
+		</div>
+	</div>
+</li>

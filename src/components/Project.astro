@@ -1,0 +1,46 @@
+---
+import { RenderableTreeNode } from "@markdoc/markdoc";
+import ExternalLinkIcon from "../components/ui/icons/external-link.astro";
+interface Props {
+	project: {
+		slug: string;
+		content: RenderableTreeNode;
+		frontmatter: {
+			draft: boolean;
+			featured: boolean;
+			title: string;
+			date: Date;
+			url: string;
+		};
+	};
+}
+const { project }: Props = Astro.props;
+const formattedDate = new Date(project.frontmatter.date).toLocaleDateString(
+	"en-us",
+	{
+		year: "numeric",
+		month: "short",
+		day: "numeric",
+	}
+);
+---
+
+<li class="project card card-bordered bg-base-300">
+	<div class="card-title p-2">
+		<span>{project.frontmatter.title}</span>
+	</div>
+	<div class="card-body"></div>
+	<div class="publish-date card-actions p-2 justify-between">
+		<div>
+			<span class="font-bold">Posted On</span>
+			<time datetime={project.frontmatter.date.toISOString()}>
+				{formattedDate}
+			</time>
+		</div>
+		<a
+			href={project.frontmatter.url}
+			class="btn btn-outline btn-primary btn-sm"
+			>Read Article</a
+		>
+	</div>
+</li>
